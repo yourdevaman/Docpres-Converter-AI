@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Digitize handwritten prescriptions into a reviewable, structured transcript. Confirm all medicine details with a qualified pharmacist or prescriber.">
+  <title>Docpres Converter AI | Handwritten Prescription &amp; Medicine Verifier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+    :root{--ink:#151515;--muted:#626a68;--line:#e4e7e6;--paper:#ffffff;--white:#fff;--green:#087f73;--green-dark:#111111;--green-soft:#e8f5f2;--gold:#9b681d;--red:#a6423a;--shadow:0 10px 28px rgba(17,24,39,.055);--radius:14px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer}.shell{max-width:1240px;margin:0 auto;padding:0 24px}.topline{height:10px;background:#111111}.header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.header-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-name{font:400 18px/1.25 'Black Ops One',system-ui,sans-serif;letter-spacing:.01em;color:#111111}.brand-name span{color:var(--green)}.brand-sub{font-size:11px;color:var(--muted);margin-top:4px}.intro{padding:34px 0 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}.eyebrow{color:var(--green);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.intro h1{font:800 clamp(27px,4vw,38px)/1.15 Manrope,sans-serif;letter-spacing:-.055em;margin:10px 0 9px}.intro p{max-width:650px;color:var(--muted);font-size:14px;line-height:1.65;margin:0}.service-status{font-size:11px;line-height:1.5;margin-top:12px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fbfcfb;color:var(--muted)}.service-status.ready{background:#f0f8f4;border-color:#d0e7dd;color:#216b4d}.service-status.warn{background:#fff8eb;border-color:#f0dfbc;color:#8a5a15}.service-status.error{background:#fff0ef;border-color:#f0d1ce;color:#8f342d}.workspace{display:grid;grid-template-columns:minmax(0, .92fr) minmax(0,1.08fr);gap:20px;align-items:start;padding-bottom:38px}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 5px 22px rgba(0,0,0,.035);overflow:hidden}.card-head{padding:18px 20px;border-bottom:1px solid #edf1ef;display:flex;align-items:center;justify-content:space-between;gap:12px}.card-title{font:800 14px Manrope,sans-serif;letter-spacing:-.02em}.step{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:8px;background:var(--green-soft);color:var(--green);font-size:11px;font-weight:800;margin-right:8px}.card-body{padding:20px}.upload-zone{position:relative;min-height:190px;border:1.5px dashed #b8cbc5;border-radius:13px;background:#f8fbf9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;transition:.18s ease;cursor:pointer}.upload-zone:hover,.upload-zone.dragover{border-color:var(--green);background:#f0f8f4}.upload-icon{width:43px;height:43px;border-radius:13px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:22px;margin-bottom:12px}.upload-zone strong{font-size:14px}.upload-zone p{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0 12px}.browse-btn{display:inline-flex;padding:8px 13px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:700;color:var(--ink)}.upload-zone input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}.file-note{font-size:11px;color:var(--muted);margin-top:10px}.preview-wrap{display:none;margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#f0f3f1}.preview-bar{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:#fff;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted);gap:10px}.preview-actions{display:flex;gap:7px}.text-btn{border:0;background:transparent;color:var(--green);font-size:11px;font-weight:700;padding:4px}.preview-img{display:block;max-width:100%;max-height:350px;object-fit:contain;margin:auto;padding:12px}.settings{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding:13px 0;border-top:1px solid #edf1ef}.setting-label{font-size:12px;font-weight:700}.setting-help{font-size:11px;color:var(--muted);margin-top:4px}.toggle{display:flex;gap:4px;background:#f1f5f3;border:1px solid var(--line);padding:3px;border-radius:9px}.toggle button{border:0;background:transparent;padding:7px 9px;border-radius:6px;font-size:11px;color:var(--muted)}.toggle button.active{background:white;color:var(--green-dark);font-weight:700;box-shadow:0 1px 3px #183d3515}.primary{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--green);border:1px solid var(--green);color:#fff;border-radius:10px;padding:13px 16px;font-size:13px;font-weight:700;transition:background .18s,transform .18s;margin-top:17px}.primary:hover{background:#0e5c52;transform:translateY(-1px)}.primary:disabled{opacity:.58;cursor:not-allowed;transform:none}.subtext{text-align:center;font-size:10px;color:var(--muted);margin:10px 0 0;line-height:1.5}.result-placeholder{min-height:405px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px}.placeholder-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:#f0f5f2;color:var(--green);font-size:24px;margin-bottom:15px}.result-placeholder h3{font:800 17px Manrope,sans-serif;letter-spacing:-.03em;margin:0 0 8px}.result-placeholder p{max-width:300px;font-size:12px;color:var(--muted);line-height:1.65;margin:0}.result-content{display:none}.result-top{padding:20px;border-bottom:1px solid #edf1ef;display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.result-top h2{font:800 17px Manrope,sans-serif;letter-spacing:-.03em;margin:0 0 6px}.result-top p{margin:0;font-size:12px;line-height:1.55;color:var(--muted)}.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:7px;background:var(--green-soft);color:var(--green);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}.badge.warn{background:#fff5e6;color:#8d5a13}.result-section{padding:19px 20px;border-bottom:1px solid #edf1ef}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.section-heading h3{font:800 12px Manrope,sans-serif;margin:0;letter-spacing:.01em}.muted-small{font-size:10px;color:var(--muted)}.medicine-card{border:1px solid var(--line);border-radius:11px;margin-bottom:10px;overflow:hidden}.medicine-card:last-child{margin-bottom:0}.medicine-head{padding:12px 13px;background:#f8faf9;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.medicine-name{font-size:13px;font-weight:800;line-height:1.4}.medicine-sub{font-size:11px;color:var(--muted);margin-top:4px}.confidence{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:5px 7px;border-radius:6px;background:#e7f5ee;color:#28724d;white-space:nowrap}.confidence.medium{background:#fff4df;color:#95651c}.confidence.low{background:#fcebea;color:#a6423a}.medicine-grid{padding:12px 13px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.field-label{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:#7a8b86;font-weight:800;margin-bottom:4px}.field-value{font-size:12px;line-height:1.55;overflow-wrap:anywhere}.flag-list{margin:0;padding:0;list-style:none;display:grid;gap:8px}.flag-list li{display:flex;gap:9px;font-size:12px;line-height:1.5;color:#465b55}.flag-list li:before{content:'!';flex:none;width:17px;height:17px;border-radius:5px;background:#fff0d9;color:#95651c;font-size:11px;font-weight:800;display:grid;place-items:center}.flag-list.safe li:before{content:'✓';background:#e7f5ee;color:#28724d}.result-actions{display:flex;gap:8px;padding:15px 20px;flex-wrap:wrap}.secondary{border:1px solid var(--line);background:white;border-radius:8px;padding:9px 12px;font-size:11px;font-weight:700;color:var(--ink)}.secondary:hover{background:#f8faf9}.alert{display:none;margin:0 0 15px;padding:11px 13px;border-radius:9px;background:#fff0ef;border:1px solid #f0d1ce;color:#8f342d;font-size:12px;line-height:1.5}.loading{display:none;padding:22px;text-align:center}.spinner{width:26px;height:26px;border:3px solid #dce9e4;border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}@keyframes spin{to{transform:rotate(360deg)}}.loading strong{font-size:13px}.loading p{font-size:11px;color:var(--muted)}.disclaimer{margin:0 0 32px;padding:16px 18px;border:1px solid #eadfca;background:#fffaf0;border-radius:12px;display:flex;gap:12px;color:#795d31;font-size:11px;line-height:1.65}.disclaimer strong{display:block;color:#61471f;font-size:12px;margin-bottom:3px}.footer{border-top:1px solid var(--line);padding:19px 0 24px;color:var(--muted);font-size:10px}.footer .shell{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.hidden{display:none!important}
+    @media(max-width:850px){.workspace{grid-template-columns:1fr}.intro{align-items:flex-start;flex-direction:column}.result-placeholder{min-height:260px}}
+    @media(max-width:650px){.header-tag{display:none}}
+    @media(max-width:520px){.shell{padding:0 14px}.header-inner{height:66px}.brand-name{font-size:16px}.brand-sub{font-size:10px}.intro{padding:26px 0 19px}.card-head,.card-body{padding:15px}.medicine-grid{grid-template-columns:1fr}.result-top{padding:16px}.result-section{padding:16px}.result-actions{padding:13px 16px}.settings{align-items:flex-start;flex-direction:column}.toggle{width:100%}.toggle button{flex:1}}
+    @media print{body{background:#fff}.topline,.header,.intro,.upload-card,.disclaimer,.footer,.result-actions{display:none!important}.shell{max-width:none;padding:0}.workspace{display:block;padding:0}.card{box-shadow:none;border:0}.result-placeholder{display:none!important}.result-content{display:block!important}.result-section,.result-top{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <div class="topline" aria-hidden="true"></div>
+  <header class="header"><div class="shell header-inner"><div class="brand"><div><div class="brand-name">Docpres Converter <span>AI</span></div><div class="brand-sub">Handwritten Prescription &amp; Medicine Verifier</div></div></div></div></header>
+  <main class="shell">
+    <section class="intro"><div><div class="eyebrow">Prescription digitization</div><h1>Make handwritten notes easier to review.</h1><p>Upload a clear photo of a prescription or medicine pack. Docpres organizes readable text, flags uncertain readings, and prepares a review copy for a pharmacist or prescriber.</p></div></section>
+    <div class="workspace">
+      <section class="card upload-card">
+        <div class="card-head"><div class="card-title"><span class="step">01</span>Upload source image</div><span class="muted-small">JPG · PNG · WEBP</span></div>
+        <div class="card-body">
+          <div class="alert" id="errorBox" role="alert"></div>
+          <label class="upload-zone" id="dropZone" for="fileInput"><div class="upload-icon">↑</div><strong>Drop your image here</strong><p>or browse files from your device<br>Use a well-lit, in-focus photo with the full page visible.</p><span class="browse-btn">Choose image</span><input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp"></label>
+          <div class="file-note">Maximum 7 MB. Avoid uploading unnecessary personal details.</div><div id="serviceStatus" class="service-status" role="status" aria-live="polite">Checking document service…</div>
+          <div class="preview-wrap" id="previewWrap"><div class="preview-bar"><span id="fileMeta">Selected image</span><div class="preview-actions"><button class="text-btn" id="rotateBtn" type="button">Rotate ↻</button><button class="text-btn" id="removeBtn" type="button">Remove</button></div></div><img class="preview-img" id="previewImage" alt="Prescription image preview"></div>
+          <div class="settings"><div><div class="setting-label">Text presentation</div><div class="setting-help">Choose the language for short explanations.</div></div><div class="toggle" role="group" aria-label="Output language"><button class="active" data-lang="English" type="button">English</button><button data-lang="Hinglish" type="button">Hinglish</button><button data-lang="Hindi" type="button">Hindi</button></div></div>
+          <button class="primary" id="analyzeBtn" type="button" disabled><span>Analyze image</span><span aria-hidden="true">→</span></button>
+          <p class="subtext">AI can misread handwriting. This tool does not prescribe, validate authenticity, or replace professional review.</p>
+        </div>
+      </section>
+      <section class="card result-card" id="resultCard">
+        <div class="card-head"><div class="card-title"><span class="step">02</span>Extraction &amp; review</div><span class="muted-small" id="resultState">Waiting for image</span></div>
+        <div class="result-placeholder" id="placeholder"><div class="placeholder-icon">▤</div><h3>Your review panel is ready</h3><p>After analysis, extracted medicine names, visible instructions, uncertain readings and verification flags will appear here.</p></div>
+        <div class="loading" id="loadingBox"><div class="spinner"></div><strong>Reading the document</strong><p>Checking visible text and separating uncertain details…</p></div>
+        <div class="result-content" id="resultContent"><div class="result-top"><div><h2 id="summaryTitle">Extraction complete</h2><p id="summaryText"></p></div><span class="badge" id="readabilityBadge">Readability</span></div><div class="result-section"><div class="section-heading"><h3>MEDICINES FOUND</h3><span class="muted-small" id="medicineCount"></span></div><div id="medicinesList"></div></div><div class="result-section" id="otherTextSection"><div class="section-heading"><h3>OTHER LEGIBLE TEXT</h3></div><ul class="flag-list safe" id="otherTextList"></ul></div><div class="result-section"><div class="section-heading"><h3>REVIEW BEFORE USE</h3><span class="badge warn">Confirmation needed</span></div><ul class="flag-list" id="flagsList"></ul></div><div class="result-section"><div class="section-heading"><h3>SAFE NEXT STEPS</h3></div><ul class="flag-list safe" id="stepsList"></ul></div><div class="result-actions"><button class="secondary" id="copyBtn" type="button">Copy transcript</button><button class="secondary" id="downloadBtn" type="button">Download JSON</button><button class="secondary" id="printBtn" type="button">Print review</button></div></div>
+      </section>
+    </div>
+    <div class="disclaimer"><span style="font-size:18px">ⓘ</span><div><strong>Important medical safety note</strong>Docpres Converter AI is a transcription aid, not a medical device or source of treatment advice. Never act on an AI-read medicine name, dose, frequency, duration, interaction, or generic substitute without confirmation from a qualified pharmacist or the prescribing clinician. The demo does not verify medicine authenticity or official PMBJP/Janaushadhi equivalence.</div></div>
+  </main>
+  <footer class="footer"><div class="shell"><span>© <span id="year"></span> Docpres Converter AI</span><span>Built for careful reading, not clinical decisions.</span></div></footer>
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const previewWrap = document.getElementById('previewWrap');
+    const previewImage = document.getElementById('previewImage');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const errorBox = document.getElementById('errorBox');
+    let selectedFile = null, previewUrl = null, rotation = 0, chosenLanguage = 'English', lastResult = null;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const serviceStatus = document.getElementById('serviceStatus');
+    fetch('/api/health', { headers: { 'Accept': 'application/json' } })
+      .then(async response => {
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(`Backend route returned HTTP ${response.status}. Check the VS Code terminal. ${detail.slice(0, 120)}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.api_configured) {
+          serviceStatus.textContent = `Document service ready · ${data.model || 'Gemini model configured'}`;
+          serviceStatus.className = 'service-status ready';
+        } else {
+          serviceStatus.textContent = 'Setup needed: add a valid GEMINI_API_KEY to the .env file, then restart the server.';
+          serviceStatus.className = 'service-status warn';
+        }
+      })
+      .catch((err) => {
+        serviceStatus.textContent = `Backend health check failed: ${err.message || 'connection refused'}. Run START-WINDOWS.bat or start app.py and open http://127.0.0.1:5000.`;
+        serviceStatus.className = 'service-status error';
+      });
+
+    document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
+      chosenLanguage = btn.dataset.lang;
+      document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b === btn));
+    }));
+
+    function showError(message) { errorBox.textContent = message; errorBox.style.display = 'block'; }
+    function clearError() { errorBox.textContent = ''; errorBox.style.display = 'none'; }
+    function setFile(file) {
+      clearError();
+      if (!file) return;
+      const allowed = ['image/jpeg','image/png','image/webp'];
+      if (!allowed.includes(file.type)) { showError('Please choose a JPG, PNG or WEBP image.'); return; }
+      if (file.size > 7 * 1024 * 1024) { showError('This image is over 7 MB. Choose a smaller image.'); return; }
+      selectedFile = file; rotation = 0;
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = URL.createObjectURL(file); previewImage.src = previewUrl; previewImage.style.transform = 'rotate(0deg)';
+      document.getElementById('fileMeta').textContent = `${file.name} · ${(file.size/1024/1024).toFixed(2)} MB`;
+      previewWrap.style.display = 'block'; analyzeBtn.disabled = false;
+    }
+    fileInput.addEventListener('change', e => setFile(e.target.files[0]));
+    ['dragenter','dragover'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.add('dragover'); }));
+    ['dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.remove('dragover'); }));
+    dropZone.addEventListener('drop', e => setFile(e.dataTransfer.files[0]));
+    document.getElementById('rotateBtn').addEventListener('click', () => { rotation = (rotation + 90) % 360; previewImage.style.transform = `rotate(${rotation}deg)`; });
+    document.getElementById('removeBtn').addEventListener('click', () => {
+      selectedFile = null; fileInput.value = ''; previewWrap.style.display = 'none'; analyzeBtn.disabled = true;
+      if (previewUrl) URL.revokeObjectURL(previewUrl); previewUrl = null;
+    });
+
+    analyzeBtn.addEventListener('click', async () => {
+      if (!selectedFile) return;
+      clearError(); analyzeBtn.disabled = true; document.getElementById('placeholder').style.display = 'none';
+      document.getElementById('resultContent').style.display = 'none'; document.getElementById('loadingBox').style.display = 'block';
+      document.getElementById('resultState').textContent = 'Analyzing…';
+      const form = new FormData();
+      try {
+        const fileToSend = rotation ? await createRotatedFile(selectedFile, rotation) : selectedFile;
+        form.append('file', fileToSend, fileToSend.name); form.append('language', chosenLanguage);
+        let response;
+        try {
+          response = await fetch('/api/analyze', { method: 'POST', body: form });
+        } catch (_) {
+          throw new Error('Cannot reach the backend. Start the app with “python app.py” and open http://127.0.0.1:5000.');
+        }
+        let data;
+        try { data = await response.json(); }
+        catch (_) { throw new Error(`Server returned non-JSON HTTP ${response.status}. The backend may have crashed; read the VS Code terminal traceback, then restart app.py.`); }
+        if (!response.ok) throw new Error(data.error || `Analysis failed (HTTP ${response.status}).`);
+        if (!data.result || typeof data.result !== 'object') throw new Error('The AI response was empty. Please try another clear image.');
+        lastResult = data.result; renderResult(lastResult);
+        document.getElementById('loadingBox').style.display = 'none'; document.getElementById('resultContent').style.display = 'block';
+        document.getElementById('resultState').textContent = 'Ready for review';
+      } catch (err) {
+        document.getElementById('loadingBox').style.display = 'none'; document.getElementById('placeholder').style.display = 'flex';
+        document.getElementById('resultState').textContent = 'Could not analyze'; showError(err.message || 'Something went wrong.');
+      } finally { analyzeBtn.disabled = !selectedFile; }
+    });
+
+
+    async function createRotatedFile(file, degrees) {
+      const bitmap = await createImageBitmap(file);
+      const sideways = degrees % 180 !== 0;
+      const canvas = document.createElement('canvas');
+      canvas.width = sideways ? bitmap.height : bitmap.width;
+      canvas.height = sideways ? bitmap.width : bitmap.height;
+      const ctx = canvas.getContext('2d');
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate(degrees * Math.PI / 180);
+      ctx.drawImage(bitmap, -bitmap.width / 2, -bitmap.height / 2);
+      bitmap.close();
+      const blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('Could not rotate this image.')), file.type || 'image/jpeg'));
+      return new File([blob], file.name, { type: blob.type || file.type || 'image/jpeg' });
+    }
+
+    function safeText(value, fallback='Unclear') { return (typeof value === 'string' && value.trim()) ? value.trim() : fallback; }
+    function renderList(id, items, fallback) {
+      const ul = document.getElementById(id); ul.replaceChildren();
+      const values = Array.isArray(items) ? items.filter(x => typeof x === 'string' && x.trim()) : [];
+      (values.length ? values : [fallback]).forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
+    }
+    function renderResult(r) {
+      const langHint = chosenLanguage === 'English' ? '' : ` Output language requested: ${chosenLanguage}.`;
+      document.getElementById('summaryTitle').textContent = r.document_type === 'prescription' ? 'Prescription text extracted' : r.document_type === 'medicine_pack' ? 'Medicine-pack text extracted' : 'Document needs manual review';
+      document.getElementById('summaryText').textContent = safeText(r.summary, 'No summary available.') + langHint;
+      const readability = safeText(r.overall_readability, 'poor').toLowerCase();
+      const badge = document.getElementById('readabilityBadge'); badge.textContent = `Readability: ${readability}`; badge.className = 'badge' + (readability === 'good' ? '' : ' warn');
+      const medicines = Array.isArray(r.medicines) ? r.medicines : [];
+      document.getElementById('medicineCount').textContent = `${medicines.length} item${medicines.length === 1 ? '' : 's'}`;
+      const list = document.getElementById('medicinesList'); list.replaceChildren();
+      if (!medicines.length) { const p = document.createElement('p'); p.className = 'muted-small'; p.textContent = 'No medicine entries could be confidently separated from the image.'; list.appendChild(p); }
+      medicines.forEach((m, i) => {
+        const card = document.createElement('article'); card.className = 'medicine-card';
+        const head = document.createElement('div'); head.className = 'medicine-head';
+        const title = document.createElement('div'); const name = document.createElement('div'); name.className = 'medicine-name'; name.textContent = `${i+1}. ${safeText(m.possible_name_reading, safeText(m.name_as_written))}`;
+        const sub = document.createElement('div'); sub.className = 'medicine-sub'; sub.textContent = `As written: ${safeText(m.name_as_written)}`; title.append(name, sub);
+        const confidence = document.createElement('span'); const level = safeText(m.confidence,'low').toLowerCase(); confidence.className = 'confidence ' + (['high','medium','low'].includes(level)?level:'low'); confidence.textContent = `${level} confidence`; head.append(title, confidence);
+        const grid = document.createElement('div'); grid.className = 'medicine-grid';
+        [['Strength',m.strength_as_written],['Instructions',m.instructions_as_written],['Duration',m.duration_as_written],['Uncertainty / review note',m.uncertainty_note]].forEach(([label,value]) => {
+          const cell = document.createElement('div'); const lab = document.createElement('div'); lab.className='field-label'; lab.textContent=label; const val=document.createElement('div'); val.className='field-value'; val.textContent=safeText(value); cell.append(lab,val); grid.appendChild(cell);
+        });
+        card.append(head,grid); list.appendChild(card);
+      });
+      const other = Array.isArray(r.other_text) ? r.other_text : [];
+      document.getElementById('otherTextSection').style.display = other.length ? 'block' : 'none';
+      renderList('otherTextList', other, 'No additional legible text found.');
+      renderList('flagsList', r.verification_flags, 'Confirm every medicine name and instruction with a pharmacist or prescriber before use.');
+      renderList('stepsList', r.safe_next_steps, 'Show the original prescription to a qualified pharmacist or prescriber.');
+    }
+    function transcriptText() {
+      if (!lastResult) return '';
+      const r = lastResult; let out = `DOCPRES CONVERTER AI — TRANSCRIPTION REVIEW\n\n${safeText(r.summary,'') }\nDocument type: ${safeText(r.document_type)}\nReadability: ${safeText(r.overall_readability)}\n\nMEDICINES\n`;
+      (r.medicines || []).forEach((m,i) => { out += `\n${i+1}. ${safeText(m.possible_name_reading, safeText(m.name_as_written))}\nAs written: ${safeText(m.name_as_written)}\nStrength: ${safeText(m.strength_as_written)}\nInstructions: ${safeText(m.instructions_as_written)}\nDuration: ${safeText(m.duration_as_written)}\nConfidence: ${safeText(m.confidence)}\nReview note: ${safeText(m.uncertainty_note)}\n`; });
+      out += `\nVERIFY BEFORE USE\n${(r.verification_flags||[]).map(x=>'• '+x).join('\n')}\n\nSAFE NEXT STEPS\n${(r.safe_next_steps||[]).map(x=>'• '+x).join('\n')}\n\nAI transcription only. Confirm all details with a qualified pharmacist or prescriber.`; return out;
+    }
+    document.getElementById('copyBtn').addEventListener('click', async () => { try { await navigator.clipboard.writeText(transcriptText()); document.getElementById('copyBtn').textContent = 'Copied'; setTimeout(()=>document.getElementById('copyBtn').textContent='Copy transcript',1400); } catch { showError('Clipboard access is unavailable in this browser.'); } });
+    document.getElementById('downloadBtn').addEventListener('click', () => { if (!lastResult) return; const blob = new Blob([JSON.stringify(lastResult,null,2)], {type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='docpres-review.json'; a.click(); URL.revokeObjectURL(url); });
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>
